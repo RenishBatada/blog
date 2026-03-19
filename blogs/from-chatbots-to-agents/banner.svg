@@ -1,0 +1,45 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ef3ff" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#6d7bff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ff6ec7" stop-opacity="0.75"/>
+    </linearGradient>
+    <radialGradient id="rad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="600" fill="#070b1a" />
+  <rect width="1200" height="600" fill="url(#rad)" />
+  <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+    <path d="M0 150 Q300 220 600 150 T1200 150" fill="none" />
+    <path d="M0 250 Q300 320 600 250 T1200 250" fill="none" />
+    <path d="M0 350 Q300 420 600 350 T1200 350" fill="none" />
+    <path d="M0 450 Q300 520 600 450 T1200 450" fill="none" />
+  </g>
+  <g fill="none" stroke="url(#grad)" stroke-width="2" stroke-linecap="round">
+    <path d="M120 300 Q200 120 320 250 T520 280 T720 200 T920 320 T1080 180" />
+    <path d="M160 360 Q240 200 400 320 T640 340 T860 260 T1060 340" opacity="0.6" />
+  </g>
+  <g fill="#111936" stroke="url(#grad)" stroke-width="2">
+    <circle cx="320" cy="250" r="36" />
+    <circle cx="520" cy="280" r="30" />
+    <circle cx="720" cy="200" r="36" />
+    <circle cx="920" cy="320" r="32" />
+  </g>
+  <g fill="white" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="28" text-anchor="middle">
+    <text x="320" y="258">Perception</text>
+    <text x="520" y="288">Policy</text>
+    <text x="720" y="208">Action</text>
+    <text x="920" y="328">Trust</text>
+  </g>
+  <g fill="rgba(255,255,255,0.6)" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="18" text-anchor="middle">
+    <text x="600" y="520">Autonomous AI agents orchestrate perception, policy, action, and trust layers in 2026</text>
+  </g>
+  <circle cx="320" cy="250" r="50" fill="url(#rad)" opacity="0.4" />
+  <circle cx="520" cy="280" r="45" fill="url(#rad)" opacity="0.4" />
+  <circle cx="720" cy="200" r="50" fill="url(#rad)" opacity="0.4" />
+  <circle cx="920" cy="320" r="48" fill="url(#rad)" opacity="0.4" />
+</svg>
