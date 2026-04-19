@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#070b1a"/>
+      <stop offset="50%" style="stop-color:#0d1328"/>
+      <stop offset="100%" style="stop-color:#070b1a"/>
+    </linearGradient>
+    <linearGradient id="genAiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6ef3ff"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="agenticAiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6ec7"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6ef3ff"/>
+      <stop offset="50%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#ff6ec7"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#6ef3ff" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="500" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="url(#genAiGrad)" opacity="0.05"/>
+  <circle cx="1100" cy="400" r="180" fill="url(#agenticAiGrad)" opacity="0.05"/>
+  
+  <!-- Left side - Gen AI -->
+  <g transform="translate(150, 250)">
+    <!-- Central brain/AI symbol -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="url(#genAiGrad)" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#genAiGrad)" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Neural network nodes -->
+    <g filter="url(#glow)">
+      <circle cx="-30" cy="-30" r="8" fill="#6ef3ff"/>
+      <circle cx="30" cy="-30" r="8" fill="#6ef3ff"/>
+      <circle cx="0" cy="0" r="10" fill="#6ef3ff"/>
+      <circle cx="-30" cy="30" r="8" fill="#6ef3ff"/>
+      <circle cx="30" cy="30" r="8" fill="#6ef3ff"/>
+      
+      <!-- Connections -->
+      <line x1="-30" y1="-30" x2="0" y2="0" stroke="#6ef3ff" stroke-width="1.5" opacity="0.6"/>
+      <line x1="30" y1="-30" x2="0" y2="0" stroke="#6ef3ff" stroke-width="1.5" opacity="0.6"/>
+      <line x1="0" y1="0" x2="-30" y2="30" stroke="#6ef3ff" stroke-width="1.5" opacity="0.6"/>
+      <line x1="0" y1="0" x2="30" y2="30" stroke="#6ef3ff" stroke-width="1.5" opacity="0.6"/>
+    </g>
+    
+    <!-- Output rays (content generation) -->
+    <g filter="url(#softGlow)">
+      <path d="M 60 -40 L 100 -60 L 90 -30 Z" fill="#6ef3ff" opacity="0.7"/>
+      <path d="M 60 0 L 110 0 L 100 20 Z" fill="#6ef3ff" opacity="0.7"/>
+      <path d="M 60 40 L 100 60 L 90 30 Z" fill="#6ef3ff" opacity="0.7"/>
+    </g>
+    
+    <!-- Label -->
+    <text x="0" y="130" text-anchor="middle" fill="#6ef3ff" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="600">GENERATIVE AI</text>
+    <text x="0" y="155" text-anchor="middle" fill="#94a3b8" font-family="Space Grotesk, sans-serif" font-size="14">Creates Content</text>
+  </g>
+  
+  <!-- Center - VS with arrows -->
+  <g transform="translate(600, 250)">
+    <!-- VS circle -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="url(#centerGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="8" text-anchor="middle" fill="url(#centerGrad)" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700">VS</text>
+    
+    <!-- Bidirectional arrows -->
+    <g filter="url(#glow)">
+      <!-- Left arrow -->
+      <path d="M -150 0 L -80 0 M -100 -15 L -80 0 L -100 15" stroke="url(#genAiGrad)" stroke-width="2" fill="none"/>
+      <!-- Right arrow -->
+      <path d="M 150 0 L 80 0 M 100 -15 L 80 0 L 100 15" stroke="url(#agenticAiGrad)" stroke-width="2" fill="none"/>
+    </g>
+    
+    <!-- Orbiting dots -->
+    <circle cx="0" cy="-70" r="4" fill="#6ef3ff" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="70" r="4" fill="#ff6ec7" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Right side - Agentic AI -->
+  <g transform="translate(1050, 250)">
+    <!-- Central agent symbol -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="url(#agenticAiGrad)" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#agenticAiGrad)" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Agent core -->
+    <g filter="url(#glow)">
+      <circle cx="0" cy="0" r="15" fill="#ff6ec7"/>
+      <!-- Surrounding action nodes -->
+      <circle cx="-40" cy="-40" r="10" fill="#ff6ec7" opacity="0.8"/>
+      <circle cx="40" cy="-40" r="10" fill="#ff6ec7" opacity="0.8"/>
+      <circle cx="-40" cy="40" r="10" fill="#ff6ec7" opacity="0.8"/>
+      <circle cx="40" cy="40" r="10" fill="#ff6ec7" opacity="0.8"/>
+      
+      <!-- Connections to core -->
+      <line x1="-40" y1="-40" x2="0" y2="0" stroke="#ff6ec7" stroke-width="1.5" opacity="0.6"/>
+      <line x1="40" y1="-40" x2="0" y2="0" stroke="#ff6ec7" stroke-width="1.5" opacity="0.6"/>
+      <line x1="-40" y1="40" x2="0" y2="0" stroke="#ff6ec7" stroke-width="1.5" opacity="0.6"/>
+      <line x1="40" y1="40" x2="0" y2="0" stroke="#ff6ec7" stroke-width="1.5" opacity="0.6"/>
+    </g>
+    
+    <!-- Action arrows (taking action) -->
+    <g filter="url(#softGlow)">
+      <path d="M -60 -50 L -100 -70 L -90 -40 L -60 -50" fill="#ff6ec7" opacity="0.7"/>
+      <path d="M -70 0 L -120 0 L -110 -20 L -70 0" fill="#ff6ec7" opacity="0.7"/>
+      <path d="M -60 50 L -100 70 L -90 40 L -60 50" fill="#ff6ec7" opacity="0.7"/>
+      
+      <!-- Tool icons -->
+      <rect x="-110" y="-65" width="15" height="15" rx="3" fill="#ff6ec7" opacity="0.5"/>
+      <rect x="-120" y="-10" width="15" height="15" rx="3" fill="#ff6ec7" opacity="0.5"/>
+      <rect x="-110" y="55" width="15" height="15" rx="3" fill="#ff6ec7" opacity="0.5"/>
+    </g>
+    
+    <!-- Label -->
+    <text x="0" y="130" text-anchor="middle" fill="#ff6ec7" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="600">AGENTIC AI</text>
+    <text x="0" y="155" text-anchor="middle" fill="#94a3b8" font-family="Space Grotesk, sans-serif" font-size="14">Takes Action</text>
+  </g>
+  
+  <!-- Top title -->
+  <text x="600" y="60" text-anchor="middle" fill="#e4e7f5" font-family="Space Grotesk, sans-serif" font-size="32" font-weight="600">Gen AI vs Agentic AI</text>
+  <text x="600" y="85" text-anchor="middle" fill="#94a3b8" font-family="Space Grotesk, sans-serif" font-size="16">Understanding the Paradigm Shift in 2026</text>
+  
+  <!-- Bottom decorative elements -->
+  <g transform="translate(600, 450)">
+    <rect x="-100" y="-10" width="200" height="2" fill="url(#centerGrad)" opacity="0.3"/>
+    <circle cx="-100" cy="-9" r="3" fill="#6ef3ff"/>
+    <circle cx="100" cy="-9" r="3" fill="#ff6ec7"/>
+  </g>
+  
+  <!-- Floating particles -->
+  <g opacity="0.4">
+    <circle cx="200" cy="80" r="2" fill="#6ef3ff">
+      <animate attributeName="cy" values="80;90;80" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="420" r="2" fill="#6ef3ff">
+      <animate attributeName="cy" values="420;430;420" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="800" cy="100" r="2" fill="#ff6ec7">
+      <animate attributeName="cy" values="100;110;100" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="400" r="2" fill="#ff6ec7">
+      <animate attributeName="cy" values="400;410;400" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="150" r="1.5" fill="#a78bfa">
+      <animate attributeName="cy" values="150;160;150" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
