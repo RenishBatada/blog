@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ─── SEO Meta Tags ─── -->
+<title>Agentic AI & Automation: The Future of Intelligent Systems | Renish Batada</title>
+<meta name="description" content="Renish Batada explores how Agentic AI works, how it's transforming automation, and why it's reshaping SEO — with diagrams, real examples, and a live workflow animation. Written by an AI Engineer.">
+<meta name="keywords" content="Agentic AI, AI Automation, LangGraph, LLM, AI Engineer, Renish Batada, SEO AI, Autonomous AI Agents, FastAPI AI, Python AI Development">
+<meta name="author" content="Renish Batada">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://renishbatada.com/blog/agentic-ai-automation">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentic AI & Automation: The Future of Intelligent Systems">
+<meta property="og:description" content="A deep dive into how Agentic AI thinks, acts, and automates — from an AI Engineer who builds these systems every day.">
+<meta property="og:url" content="https://renishbatada.com/blog/agentic-ai-automation">
+<meta property="og:site_name" content="Renish Batada">
+<meta property="og:image" content="https://renishbatada.com/static/img/renish.png">
+<meta property="article:author" content="Renish Batada">
+<meta property="article:published_time" content="2025-04-17">
+<meta property="article:tag" content="Agentic AI">
+<meta property="article:tag" content="LangGraph">
+<meta property="article:tag" content="AI Automation">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentic AI & Automation — Renish Batada">
+<meta name="twitter:description" content="How Agentic AI really works — from an AI Engineer building it daily.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Agentic AI & Automation: The Future of Intelligent Systems",
+  "description": "A deep dive into Agentic AI — how it works, its role in automation, and why it matters for SEO in 2025.",
+  "author": {
+    "@type": "Person",
+    "name": "Renish Batada",
+    "url": "https://renishbatada.com",
+    "jobTitle": "AI Engineer",
+    "sameAs": ["https://in.linkedin.com/in/renish-batada"]
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Renish Batada",
+    "url": "https://renishbatada.com"
+  },
+  "datePublished": "2025-04-17",
+  "dateModified": "2025-04-17",
+  "mainEntityOfPage": "https://renishbatada.com/blog/agentic-ai-automation",
+  "keywords": ["Agentic AI", "LangGraph", "LLM", "AI Automation", "SEO AI", "FastAPI"],
+  "articleSection": "AI Engineering"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0f1117;
+  --bg2: #161b27;
+  --bg3: #1e2535;
+  --border: rgba(255,255,255,0.07);
+  --text: #e2e8f0;
+  --muted: #8892a4;
+  --accent: #38bdf8; /* sky blue — matches AI/tech feel */
+  --accent2: #a78bfa; /* soft violet */
+  --green: #34d399;
+  --gold: #fbbf24;
+  --white: #ffffff;
+  --font-body: 'Sora', sans-serif;
+  --font-prose: 'Lora', serif;
+  --font-code: 'Fira Code', monospace;
+  --max-w: 720px;
+  --wide-w: 1000px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ─── Reading progress ─── */
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 200;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  width: 0%; transition: width 0.1s linear;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,17,23,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: var(--wide-w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 58px;
+}
+.nav-logo {
+  font-family: var(--font-code); font-size: 14px;
+  color: var(--accent); letter-spacing: 0.5px; text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .slash { color: var(--muted); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-tag {
+  font-family: var(--font-code); font-size: 11px;
+  color: var(--green); background: rgba(52,211,153,0.1);
+  border: 1px solid rgba(52,211,153,0.2);
+  border-radius: 4px; padding: 3px 10px;
+}
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    background: rgba(15,17,23,0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 99;
+  }
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links a { font-size: 15px; padding: 8px 0; }
+  .nav-tag { display: none; }
+  .nav-logo { font-size: 16px; }
+}
+
+/* ─── HERO / POST HEADER ─── */
+.post-header {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-code); font-size: 12px; color: var(--muted);
+  margin-bottom: 32px;
+}
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb span { color: var(--border); }
+
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.tag {
+  font-family: var(--font-code); font-size: 11px;
+  padding: 3px 12px; border-radius: 4px;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.2);
+  color: var(--accent);
+}
+.tag.purple {
+  background: rgba(167,139,250,0.08);
+  border-color: rgba(167,139,250,0.2);
+  color: var(--accent2);
+}
+.tag.green {
+  background: rgba(52,211,153,0.08);
+  border-color: rgba(52,211,153,0.2);
+  color: var(--green);
+}
+
+h1.post-title {
+  font-family: var(--font-prose);
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 600; line-height: 1.25;
+  color: var(--white); margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.post-title .highlight { color: var(--accent); font-style: italic; }
+
+.post-subtitle {
+  font-size: 18px; color: var(--muted); line-height: 1.7;
+  font-family: var(--font-prose); font-style: italic;
+  margin-bottom: 32px; padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.author-row {
+  display: flex; align-items: center; gap: 14px;
+}
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover; background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--accent); font-weight: 700;
+  flex-shrink: 0; overflow: hidden;
+}
+.author-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.author-info { display: flex; flex-direction: column; gap: 2px; }
+.author-name {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  text-decoration: none;
+}
+.author-name:hover { color: var(--accent); }
+.author-meta { font-size: 12px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+.author-meta span::before { content: '·'; margin-right: 8px; color: var(--border); }
+.author-meta span:first-child::before { display: none; }
+
+/* ─── MAIN LAYOUT ─── */
+.post-layout {
+  max-width: var(--wide-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 260px;
+  gap: 60px; padding: 0 24px 80px;
+  align-items: start;
+}
+@media (max-width: 840px) {
+  .post-layout { grid-template-columns: 1fr; }
+  .toc-sidebar { display: none; }
+}
+
+/* ─── PROSE ─── */
+.prose { max-width: var(--max-w); }
+.prose p {
+  font-family: var(--font-prose);
+  font-size: 17px; line-height: 1.85;
+  color: #c8d3e0; margin-bottom: 24px;
+}
+.prose h2 {
+  font-family: var(--font-body);
+  font-size: 22px; font-weight: 700;
+  color: var(--white); margin: 52px 0 16px;
+  padding-top: 52px; border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
+  display: flex; align-items: center; gap: 10px;
+}
+.prose h2 .h-icon { font-size: 18px; }
+.prose h3 {
+  font-family: var(--font-body);
+  font-size: 17px; font-weight: 600;
+  color: var(--text); margin: 32px 0 12px;
+}
+.prose strong { color: var(--white); font-weight: 600; }
+.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose ul, .prose ol { padding-left: 20px; margin-bottom: 24px; }
+.prose li {
+  font-family: var(--font-prose); font-size: 17px;
+  color: #c8d3e0; margin-bottom: 8px; line-height: 1.75;
+}
+.prose li::marker { color: var(--accent); }
+
+/* Callout boxes */
+.callout {
+  border-left: 3px solid var(--accent);
+  background: rgba(56,189,248,0.06);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px; margin: 32px 0;
+}
+.callout.purple { border-color: var(--accent2); background: rgba(167,139,250,0.06); }
+.callout.green { border-color: var(--green); background: rgba(52,211,153,0.06); }
+.callout-label {
+  font-family: var(--font-code); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px; display: block;
+}
+.callout.purple .callout-label { color: var(--accent2); }
+.callout.green .callout-label { color: var(--green); }
+.callout p { margin-bottom: 0; font-size: 15px; color: var(--muted); font-family: var(--font-body); }
+
+/* Code blocks */
+.code-block {
+  background: #0d1117; border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; margin: 28px 0;
+}
+.code-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.code-lang { font-family: var(--font-code); font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.code-dots { display: flex; gap: 6px; }
+.code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.code-dots span:nth-child(1) { background: #ff5f57; }
+.code-dots span:nth-child(2) { background: #ffbd2e; }
+.code-dots span:nth-child(3) { background: #28c840; }
+.code-block pre {
+  padding: 20px; overflow-x: auto; font-family: var(--font-code);
+  font-size: 13px; line-height: 1.7; color: #c9d1d9;
+}
+.code-block pre .kw { color: #ff7b72; }
+.code-block pre .fn { color: #d2a8ff; }
+.code-block pre .st { color: #a5d6ff; }
+.code-block pre .cm { color: #8b949e; font-style: italic; }
+.code-block pre .nb { color: #ffa657; }
+
+/* Image / diagram wrapper */
+.diagram-wrap {
+  margin: 36px 0; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+}
+.diagram-wrap figcaption {
+  text-align: center; padding: 12px 16px;
+  font-family: var(--font-code); font-size: 11px;
+  color: var(--muted); letter-spacing: 1px;
+  border-top: 1px solid var(--border);
+}
+
+/* Canvas animation wrapper */
+#canvas-wrap {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(56,189,248,0.15);
+  background: #070b14; margin: 36px 0;
+}
+#agent-canvas { display: block; width: 100%; }
+.canvas-controls {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.02);
+}
+.canvas-label { font-family: var(--font-code); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 1.5s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+#replay-btn {
+  font-family: var(--font-code); font-size: 11px;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--muted); border-radius: 6px;
+  padding: 5px 14px; cursor: pointer; letter-spacing: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+#replay-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Comparison table */
+.table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 10px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: var(--bg3); }
+th {
+  padding: 14px 18px; text-align: left;
+  font-family: var(--font-code); font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 13px 18px; font-size: 14px; color: #c8d3e0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top; line-height: 1.6;
+}
+tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(255,255,255,0.02); }
+.chip { display: inline-block; border-radius: 4px; padding: 2px 10px; font-size: 11px; font-weight: 600; font-family: var(--font-code); }
+.chip-red { background: rgba(239,68,68,0.12); color: #f87171; }
+.chip-green { background: rgba(52,211,153,0.12); color: var(--green); }
+
+/* Workflow steps */
+.steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+.step {
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 0; position: relative;
+}
+.step:not(:last-child)::after {
+  content: ''; position: absolute;
+  left: 23px; top: 48px; bottom: -16px; width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.step-num {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-code); font-size: 13px; font-weight: 600;
+  color: var(--accent); flex-shrink: 0; background: var(--bg);
+  z-index: 1;
+}
+.step-content { padding: 8px 0 32px 20px; }
+.step-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.step-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* SEO cards */
+.seo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 32px 0; }
+@media (max-width: 540px) { .seo-grid { grid-template-columns: 1fr; } }
+.seo-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+  transition: border-color 0.2s ease;
+}
+.seo-card:hover { border-color: rgba(56,189,248,0.3); }
+.seo-card-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.seo-card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.seo-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* Share + Tags footer */
+.post-footer {
+  margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.post-footer-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.share-row { display: flex; align-items: center; gap: 12px; }
+.share-label { font-size: 13px; color: var(--muted); font-family: var(--font-code); letter-spacing: 1px; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; padding: 7px 16px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--bg2);
+  color: var(--muted); cursor: pointer; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Author bio card */
+.author-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px; margin-top: 40px;
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.author-card-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 2px solid var(--accent); flex-shrink: 0; overflow: hidden;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; color: var(--accent);
+}
+.author-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.author-card-body {}
+.author-card-name { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.author-card-role { font-family: var(--font-code); font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 10px; }
+.author-card-bio { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.author-card-links { display: flex; gap: 12px; margin-top: 12px; }
+.author-card-links a {
+  font-family: var(--font-code); font-size: 11px; color: var(--accent);
+  text-decoration: none; border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 4px; padding: 4px 12px;
+  transition: background 0.2s;
+}
+.author-card-links a:hover { background: rgba(56,189,248,0.08); }
+
+/* ─── TOC SIDEBAR ─── */
+.toc-sidebar { position: sticky; top: 78px; }
+.toc-box {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+}
+.toc-title {
+  font-family: var(--font-code); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.toc-list li a {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  display: block; padding: 5px 10px; border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  line-height: 1.5;
+}
+.toc-list li a:hover, .toc-list li a.active {
+  color: var(--accent); border-left-color: var(--accent);
+  background: rgba(56,189,248,0.06);
+}
+.toc-read-time { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+.toc-read-time p { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── Diagram SVG responsive ─── */
+.diagram-wrap svg, .diagram-wrap canvas { width: 100%; display: block; }
+
+/* Footer link */
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-code); font-size: 13px;
+  color: var(--accent); text-decoration: none;
+  margin-bottom: 40px; padding: 8px 16px;
+  border: 1px solid rgba(56,189,248,0.2); border-radius: 6px;
+  transition: background 0.2s;
+}
+.back-link:hover { background: rgba(56,189,248,0.08); }
+
+/* Additional mobile styles */
+@media (max-width: 768px) {
+  .post-header { padding: 40px 16px 32px; }
+  .breadcrumb { font-size: 11px; margin-bottom: 20px; flex-wrap: wrap; }
+  .post-tags { gap: 6px; margin-bottom: 16px; }
+  .tag { font-size: 10px; padding: 2px 8px; }
+  h1.post-title { font-size: 24px; line-height: 1.3; }
+  .post-subtitle { font-size: 15px; margin-bottom: 24px; padding-bottom: 24px; }
+  .author-row { gap: 10px; }
+  .author-avatar { width: 36px; height: 36px; font-size: 14px; }
+  .author-name { font-size: 13px; }
+  .author-meta { font-size: 11px; gap: 8px; }
+  .post-layout { padding: 0 16px 60px; gap: 40px; }
+  .prose p { font-size: 15px; line-height: 1.75; margin-bottom: 18px; }
+  .prose h2 { font-size: 18px; margin: 36px 0 12px; padding-top: 36px; }
+  .prose h3 { font-size: 15px; margin: 24px 0 10px; }
+  .prose ul, .prose ol { padding-left: 16px; margin-bottom: 18px; }
+  .prose li { font-size: 15px; margin-bottom: 6px; }
+  .callout { padding: 14px 16px; margin: 24px 0; }
+  .callout p { font-size: 14px; }
+  .code-block { margin: 20px 0; }
+  .code-block pre { padding: 14px; font-size: 12px; }
+  .code-header { padding: 8px 12px; }
+  .diagram-wrap { margin: 24px 0; }
+  #canvas-wrap { margin: 24px 0; }
+  .canvas-controls { padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
+  .steps { margin: 24px 0; }
+  .step { grid-template-columns: 36px 1fr; }
+  .step:not(:last-child)::after { left: 17px; top: 36px; }
+  .step-num { width: 36px; height: 36px; font-size: 11px; }
+  .step-content { padding: 6px 0 24px 14px; }
+  .step-title { font-size: 14px; }
+  .step-desc { font-size: 13px; }
+  .seo-grid { gap: 12px; margin: 24px 0; }
+  .seo-card { padding: 16px; }
+  .seo-card-title { font-size: 13px; }
+  .seo-card-desc { font-size: 12px; }
+  .table-wrap { margin: 24px 0; }
+  th, td { padding: 10px 12px; font-size: 12px; }
+  .post-footer { margin-top: 40px; padding-top: 24px; }
+  .post-footer-tags { margin-bottom: 20px; }
+  .share-row { flex-wrap: wrap; gap: 10px; }
+  .share-label { font-size: 12px; }
+  .share-btn { font-size: 12px; padding: 6px 12px; }
+  .author-card { flex-direction: column; padding: 20px; gap: 16px; margin-top: 32px; }
+  .author-card-avatar { width: 48px; height: 48px; font-size: 18px; }
+  .author-card-name { font-size: 15px; }
+  .author-card-role { font-size: 10px; }
+  .author-card-bio { font-size: 13px; }
+  .author-card-links { gap: 10px; }
+  .author-card-links a { font-size: 10px; padding: 4px 10px; }
+  .back-link { font-size: 12px; padding: 6px 12px; margin-bottom: 24px; }
+  
+  /* Fix content overflow on mobile */
+  .code-block, .code-block pre, pre, code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  .prose p, .prose li, .prose span, .step-desc, .seo-card-desc {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    min-width: 100%;
+    display: block;
+  }
+  thead, tbody, tr {
+    display: block;
+  }
+  tr {
+    margin-bottom: 8px;
+  }
+  th, td {
+    display: block;
+    text-align: left;
+    padding: 8px 12px;
+  }
+  th {
+    background: var(--bg3);
+    font-weight: 600;
+  }
+  .diagram-wrap, .diagram-wrap svg, #canvas-wrap, #agent-canvas {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- POST HEADER -->
+<header class="post-header">
+  <div class="post-tags">
+    <span class="tag">Agentic AI</span>
+    <span class="tag purple">LangGraph</span>
+    <span class="tag purple">LLM</span>
+    <span class="tag green">SEO</span>
+    <span class="tag">Automation</span>
+    <span class="tag">FastAPI</span>
+  </div>
+
+  <h1 class="post-title">
+    Agentic AI & Automation:<br>
+    <span class="highlight">The Technology That Works While You Sleep</span>
+  </h1>
+
+  <p class="post-subtitle">
+    I build Agentic AI systems every day using LangGraph, FastAPI, and LLMs. Here's what actually happens under the hood — and why it's changing everything from enterprise workflows to how Google ranks your content.
+  </p>
+
+  <div class="author-row">
+    <div class="author-avatar">
+      <img src="https://renishbatada.com/static/img/renish.png" alt="Renish Batada" onerror="this.style.display='none';this.parentElement.textContent='R'">
+    </div>
+    <div class="author-info">
+      <a href="https://renishbatada.com" class="author-name">Renish Batada</a>
+      <div class="author-meta">
+        <span>AI Engineer</span>
+        <span>12 min read</span>
+        <span>LangGraph · FastAPI · LLM</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="post-layout">
+
+  <!-- PROSE CONTENT -->
+  <article class="prose" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="author" content="Renish Batada">
+    <meta itemprop="datePublished" content="2025-04-17">
+
+    <a href="https://renishbatada.com#blog" class="back-link">← Back to Blog</a>
+
+    <p>I still remember the first time I ran a LangGraph agent and watched it solve a multi-step problem completely on its own — fetching web data, reasoning over it, writing code, executing it, checking the result, and correcting itself when it was wrong. I hadn't asked it to do any of that step by step. I just gave it a goal.</p>
+
+    <p>That moment changed how I think about software. Not because it was magic — I knew exactly how it worked technically — but because of what it implied: <strong>the gap between "a prompt" and "a product" just collapsed.</strong></p>
+
+    <p>In this post, I'll break down what Agentic AI actually is, how it works at a systems level (with diagrams), how I've used it in real projects, and — importantly for developers and creators — how it's reshaping SEO in ways most people haven't caught up to yet.</p>
+
+    <!-- SECTION 1 -->
+    <h2 id="what-is-it"><span class="h-icon">🤖</span> What Is Agentic AI, Actually?</h2>
+
+    <p>Let's cut through the hype. The term "agentic" gets slapped on everything nowadays. Here's the precise definition I use:</p>
+
+    <div class="callout">
+      <span class="callout-label">// definition</span>
+      <p>An <strong>Agentic AI</strong> system is one that autonomously perceives its environment, reasons about a goal, selects and uses tools, takes actions, observes results, and adapts — in a loop — without human input at each step.</p>
+    </div>
+
+    <p>The key word is <strong>loop</strong>. Traditional AI is a one-shot system: input → output, done. An agent is a <em>cycle</em> that keeps running until the goal is achieved. This is the fundamental architectural shift.</p>
+
+    <p>Think of it this way: a regular LLM is like a consultant who answers one question per meeting. An agent is like a full-time employee who keeps working until the project ships.</p>
+
+    <!-- Architecture Diagram -->
+    <figure class="diagram-wrap reveal">
+      <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="background:#070b14">
+        <defs>
+          <marker id="a1" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto">
+            <polygon points="0 0,7 2.5,0 5" fill="#38bdf8"/>
+          </marker>
+          <marker id="a2" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto">
+            <polygon points="0 0,7 2.5,0 5" fill="#a78bfa"/>
+          </marker>
+        </defs>
+        <!-- Loop background -->
+        <rect x="20" y="20" width="640" height="260" rx="12" fill="none" stroke="rgba(56,189,248,0.08)" stroke-width="1"/>
+
+        <!-- Boxes -->
+        <!-- Perceive -->
+        <rect x="50" y="110" width="110" height="80" rx="8" fill="rgba(56,189,248,0.07)" stroke="rgba(56,189,248,0.25)" stroke-width="1"/>
+        <text x="105" y="143" text-anchor="middle" fill="#38bdf8" font-size="12" font-family="Fira Code,monospace" font-weight="600">PERCEIVE</text>
+        <text x="105" y="162" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="Sora,sans-serif">Env · Tools · Memory</text>
+
+        <!-- Reason -->
+        <rect x="210" y="110" width="110" height="80" rx="8" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+        <text x="265" y="143" text-anchor="middle" fill="#a78bfa" font-size="12" font-family="Fira Code,monospace" font-weight="600">REASON</text>
+        <text x="265" y="162" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="Sora,sans-serif">LLM · Plan · Decide</text>
+
+        <!-- Act -->
+        <rect x="370" y="110" width="110" height="80" rx="8" fill="rgba(251,191,36,0.07)" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+        <text x="425" y="143" text-anchor="middle" fill="#fbbf24" font-size="12" font-family="Fira Code,monospace" font-weight="600">ACT</text>
+        <text x="425" y="162" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="Sora,sans-serif">API · Code · Write</text>
+
+        <!-- Reflect -->
+        <rect x="530" y="110" width="110" height="80" rx="8" fill="rgba(52,211,153,0.07)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+        <text x="585" y="143" text-anchor="middle" fill="#34d399" font-size="12" font-family="Fira Code,monospace" font-weight="600">REFLECT</text>
+        <text x="585" y="162" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="9" font-family="Sora,sans-serif">Check · Retry · Learn</text>
+
+        <!-- Forward arrows -->
+        <line x1="162" y1="150" x2="208" y2="150" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a1)">
+          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+        </line>
+        <line x1="322" y1="150" x2="368" y2="150" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#a2)">
+          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2.1s" repeatCount="indefinite"/>
+        </line>
+        <line x1="482" y1="150" x2="528" y2="150" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#a1)" style="--c:#fbbf24">
+          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Feedback loop back arrow (bottom) -->
+        <path d="M585,192 Q585,240 340,240 Q95,240 105,192" fill="none" stroke="rgba(52,211,153,0.3)" stroke-width="1" stroke-dasharray="4,5">
+          <animate attributeName="stroke-dashoffset" values="0;-18" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <polygon points="105,192 100,204 111,200" fill="rgba(52,211,153,0.5)"/>
+        <text x="340" y="258" text-anchor="middle" fill="rgba(52,211,153,0.4)" font-size="9" font-family="Fira Code,monospace">feedback loop · repeats until goal achieved</text>
+
+        <!-- Goal label -->
+        <rect x="280" y="38" width="120" height="30" rx="6" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.2)" stroke-width="1"/>
+        <text x="340" y="57" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="Fira Code,monospace">🎯 GOAL INPUT</text>
+        <line x1="340" y1="68" x2="340" y2="108" stroke="rgba(56,189,248,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+      </svg>
+      <figcaption>Fig 1. The Agentic Loop — every agent runs this cycle continuously until the objective is reached.</figcaption>
+    </figure>
+
+    <!-- SECTION 2 -->
+    <h2 id="langgraph"><span class="h-icon">🔗</span> How I Build This With LangGraph</h2>
+
+    <p>I use <strong>LangGraph</strong> for almost everything I build now. If you haven't heard of it — it's a framework from LangChain that lets you define agent workflows as <em>graphs</em>, where each node is a function (or LLM call), and edges define how control flows between them.</p>
+
+    <p>Here's a simplified version of what a LangGraph agent looks like in code:</p>
+
+    <div class="code-block reveal">
+      <div class="code-header">
+        <div class="code-dots"><span></span><span></span><span></span></div>
+        <span class="code-lang">PYTHON · LANGGRAPH AGENT</span>
+      </div>
+      <pre><span class="cm"># Agentic AI with LangGraph — simplified example</span>
+<span class="kw">from</span> langgraph.graph <span class="kw">import</span> StateGraph, END
+<span class="kw">from</span> langchain_google_genai <span class="kw">import</span> ChatGoogleGenerativeAI
+
+<span class="cm"># 1. Define agent state</span>
+<span class="kw">class</span> <span class="fn">AgentState</span>(TypedDict):
+    goal: str
+    steps_taken: list
+    result: str
+    done: bool
+
+<span class="cm"># 2. Define nodes (each = one reasoning step)</span>
+<span class="kw">def</span> <span class="fn">planner_node</span>(state: AgentState):
+    llm = ChatGoogleGenerativeAI(model=<span class="st">"gemini-pro"</span>)
+    plan = llm.invoke(<span class="st">f"Break this goal into steps: {state['goal']}"</span>)
+    <span class="kw">return</span> {<span class="st">"steps_taken"</span>: [plan.content]}
+
+<span class="kw">def</span> <span class="fn">executor_node</span>(state: AgentState):
+    <span class="cm"># Execute the plan using tools (web search, code runner, etc.)</span>
+    result = execute_with_tools(state[<span class="st">"steps_taken"</span>[-<span class="nb">1</span>]])
+    <span class="kw">return</span> {<span class="st">"result"</span>: result}
+
+<span class="kw">def</span> <span class="fn">reflection_node</span>(state: AgentState):
+    <span class="cm"># Did we achieve the goal? If not, loop back.</span>
+    achieved = evaluate_goal(state[<span class="st">"result"</span>], state[<span class="st">"goal"</span>])
+    <span class="kw">return</span> {<span class="st">"done"</span>: achieved}
+
+<span class="cm"># 3. Build the graph</span>
+graph = StateGraph(AgentState)
+graph.add_node(<span class="st">"plan"</span>, planner_node)
+graph.add_node(<span class="st">"execute"</span>, executor_node)
+graph.add_node(<span class="st">"reflect"</span>, reflection_node)
+
+<span class="cm"># Conditional edge: loop if not done</span>
+graph.add_conditional_edges(<span class="st">"reflect"</span>, 
+    <span class="kw">lambda</span> s: END <span class="kw">if</span> s[<span class="st">"done"</span>] <span class="kw">else</span> <span class="st">"plan"</span>)
+
+agent = graph.compile()</pre>
+    </div>
+
+    <p>The magic is in that conditional edge at the end. The agent loops — plans, executes, reflects — until the goal is met. No human in the loop. This is what makes it "agentic" rather than just a chain of prompts.</p>
+
+    <!-- SECTION 3: Animation -->
+    <h2 id="animation"><span class="h-icon">⚡</span> Watch an Agent Run Live</h2>
+
+    <p>This is a real-time simulation of an Agentic SEO audit running. The agent core dispatches tasks to tools, collects results, and logs each step — exactly how my systems work.</p>
+
+    <div id="canvas-wrap" class="reveal">
+      <canvas id="agent-canvas" height="380"></canvas>
+      <div class="canvas-controls">
+        <div class="canvas-label">
+          <div class="live-dot"></div>
+          AGENT SIMULATION RUNNING
+        </div>
+        <button id="replay-btn">↺ RESTART</button>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Workflow -->
+    <h2 id="workflow"><span class="h-icon">🔄</span> The Agentic Workflow: Step by Step</h2>
+
+    <p>When I deploy an agent to handle, say, automated content SEO — here's what it actually does:</p>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title">Goal Decomposition</div>
+          <div class="step-desc">The LLM receives a high-level objective ("improve organic traffic by 30% in Q2") and breaks it into a directed acyclic graph of sub-tasks — keyword research, content audit, technical fixes, link opportunities.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title">Tool Selection</div>
+          <div class="step-desc">For each sub-task, the agent selects the right tool from its arsenal — web scraper, Google Search Console API, code executor, content generator, database query tool. I wire these via FastAPI endpoints.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title">Parallel Execution</div>
+          <div class="step-desc">LangGraph's async support lets sub-agents run in parallel. One fetches SERP data while another audits page speed and a third drafts new content — simultaneously. This is where the time savings get dramatic.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title">Reflection & Self-Correction</div>
+          <div class="step-desc">Results are fed back through a reflection node. If a content draft doesn't pass the quality check, the agent rewrites it with new constraints. If a tool call fails, it retries with a different approach — no human intervention needed.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <div class="step-title">Memory & State Persistence</div>
+          <div class="step-desc">Using vector databases (Pinecone) and MongoDB for memory, the agent remembers what worked last week, what content already exists, which keywords are already ranking — so it doesn't repeat work or generate duplicates.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: SEO -->
+    <h2 id="seo"><span class="h-icon">📈</span> Agentic AI & SEO: Why This Matters Right Now</h2>
+
+    <p>This section is for developers, indie hackers, and content creators who want to use this practically. Agentic AI is fundamentally changing how content gets produced and ranked — and it's creating a massive skill gap between those who understand it and those who don't.</p>
+
+    <div class="callout purple reveal">
+      <span class="callout-label">// key insight</span>
+      <p>Google's search systems increasingly reward <strong>topical authority, freshness, and depth</strong> — all three of which Agentic AI can produce at scale, faster than any human team. This isn't replacing writers. It's raising the bar for what "good content" means.</p>
+    </div>
+
+    <p>Here's how an Agentic SEO system covers the full funnel:</p>
+
+    <div class="seo-grid reveal">
+      <div class="seo-card">
+        <span class="seo-card-icon">🔍</span>
+        <div class="seo-card-title">Keyword Intelligence</div>
+        <div class="seo-card-desc">Agents crawl SERPs, identify intent clusters, map semantic gaps, and prioritise by traffic potential × competition — updated daily, not monthly.</div>
+      </div>
+      <div class="seo-card">
+        <span class="seo-card-icon">✍️</span>
+        <div class="seo-card-title">Content at Scale</div>
+        <div class="seo-card-desc">Research, outline, draft, optimise, and publish — with E-E-A-T signals baked in. Not generic fluff; structured depth that ranks.</div>
+      </div>
+      <div class="seo-card">
+        <span class="seo-card-icon">⚙️</span>
+        <div class="seo-card-title">Technical SEO Fixes</div>
+        <div class="seo-card-desc">Agents detect broken links, missing schema markup, crawl errors, and Core Web Vitals issues — then generate and apply fixes autonomously.</div>
+      </div>
+      <div class="seo-card">
+        <span class="seo-card-icon">🔗</span>
+        <div class="seo-card-title">Internal Linking</div>
+        <div class="seo-card-desc">Map content relationships, identify orphan pages, suggest and insert contextual internal links — maintaining topical hierarchy automatically.</div>
+      </div>
+      <div class="seo-card">
+        <span class="seo-card-icon">📊</span>
+        <div class="seo-card-title">Rank Monitoring</div>
+        <div class="seo-card-desc">Track 10,000+ keywords, detect drops, correlate with algorithm changes, and trigger recovery content — without anyone opening a dashboard.</div>
+      </div>
+      <div class="seo-card">
+        <span class="seo-card-icon">🤝</span>
+        <div class="seo-card-title">Outreach Automation</div>
+        <div class="seo-card-desc">Find link prospects, personalise outreach at scale, track responses, follow up — the full link-building pipeline, agentically orchestrated.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: Traditional vs Agentic -->
+    <h2 id="comparison"><span class="h-icon">⚖️</span> Traditional Automation vs Agentic AI</h2>
+
+    <p>I get asked this a lot: "Is this just RPA with an LLM bolted on?" No. The difference is categorical, not incremental.</p>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>RPA / Scripts</th>
+            <th>Agentic AI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Handles ambiguity</strong></td>
+            <td><span class="chip chip-red">Breaks</span></td>
+            <td><span class="chip chip-green">Adapts</span></td>
+          </tr>
+          <tr>
+            <td><strong>Unstructured input</strong></td>
+            <td>Needs clean, formatted data</td>
+            <td>PDFs, emails, HTML, images — all fine</td>
+          </tr>
+          <tr>
+            <td><strong>Self-correction</strong></td>
+            <td><span class="chip chip-red">None</span> — fails silently</td>
+            <td><span class="chip chip-green">Yes</span> — retries with new strategy</td>
+          </tr>
+          <tr>
+            <td><strong>Multi-step reasoning</strong></td>
+            <td>You define every step in advance</td>
+            <td>Agent decomposes goals dynamically</td>
+          </tr>
+          <tr>
+            <td><strong>Learning over time</strong></td>
+            <td>Same on day 1 and day 365</td>
+            <td>Memory improves every cycle</td>
+          </tr>
+          <tr>
+            <td><strong>Setup complexity</strong></td>
+            <td>Weeks of flowchart mapping</td>
+            <td>Describe goal in natural language</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION 7: What I'd tell you -->
+    <h2 id="advice"><span class="h-icon">💡</span> What I'd Tell You If We Were Grabbing Coffee</h2>
+
+    <p>Here's the honest, non-hype version of where things stand:</p>
+
+    <ul>
+      <li><strong>Agentic AI is not plug-and-play yet.</strong> You need to engineer the tools, the memory, the error handling, the prompts. It's real engineering work. But the time-to-value is collapsing fast.</li>
+      <li><strong>LangGraph is genuinely the best framework</strong> I've used for production agents. It's explicit, debuggable, and handles complex multi-agent setups cleanly.</li>
+      <li><strong>The SEO angle is massively underexploited.</strong> Most SEO agencies haven't even started thinking about agentic systems. If you build this capability, you're 2-3 years ahead of most of the market.</li>
+      <li><strong>Start with a narrow scope.</strong> Don't build "the agent that does everything." Build one that does one workflow end-to-end with zero human touchpoints. Ship that. Then expand.</li>
+      <li><strong>Pair it with FastAPI.</strong> Exposing your agent as an API lets you integrate it anywhere — your CMS, your dashboard, Slack, whatever. This is how you make it actually useful to non-technical stakeholders.</li>
+    </ul>
+
+    <div class="callout green reveal">
+      <span class="callout-label">// tldr</span>
+      <p>Agentic AI is the first technology that doesn't just <em>answer</em> questions — it <em>pursues</em> goals. If you're building software in 2025 without thinking about how agents fit in, you're writing for a world that's already changing underneath you.</p>
+    </div>
+
+    <p>If you want to explore this further — or if you're building something in this space and want to talk through the architecture — I'm always up for it. Drop me a message via the contact form on the site.</p>
+
+    <!-- POST FOOTER -->
+    <div class="post-footer">
+      <div class="post-footer-tags">
+        <span class="tag">#AgenticAI</span>
+        <span class="tag purple">#LangGraph</span>
+        <span class="tag purple">#LLM</span>
+        <span class="tag">#FastAPI</span>
+        <span class="tag green">#SEO</span>
+        <span class="tag">#AIAutomation</span>
+        <span class="tag">#Python</span>
+      </div>
+
+      <div class="share-row">
+        <span class="share-label">SHARE //</span>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?text=Agentic+AI+%26+Automation+by+%40RenishBatada&url=https://renishbatada.com/blog/agentic-ai-automation" target="_blank">𝕏 Twitter</a>
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://renishbatada.com/blog/agentic-ai-automation" target="_blank">in LinkedIn</a>
+      </div>
+    </div>
+
+    </article>
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar">
+    <div class="toc-box">
+      <div class="toc-title">// Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#what-is-it">What Is Agentic AI?</a></li>
+        <li><a href="#langgraph">Building with LangGraph</a></li>
+        <li><a href="#animation">Watch an Agent Run</a></li>
+        <li><a href="#workflow">The Agentic Workflow</a></li>
+        <li><a href="#seo">Agentic AI & SEO</a></li>
+        <li><a href="#comparison">Traditional vs Agentic</a></li>
+        <li><a href="#advice">Honest Takeaways</a></li>
+      </ul>
+      <div class="toc-read-time">
+        <p>📖 ~12 min read</p>
+        <p style="margin-top:6px">🏷️ AI Engineering</p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+// Mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (scrollY / total * 100) + '%';
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(el => ro.observe(el));
+
+// TOC active highlight
+const headings = document.querySelectorAll('.prose h2[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  headings.forEach(h => { if (scrollY >= h.offsetTop - 120) current = h.id; });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ─── CANVAS AGENT ANIMATION ───
+const canvas = document.getElementById('agent-canvas');
+const ctx = canvas.getContext('2d');
+function resize() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = 380;
+}
+resize();
+window.addEventListener('resize', () => { resize(); startSim(); });
+
+const C = {
+  bg: '#070b14',
+  accent: '#38bdf8',
+  purple: '#a78bfa',
+  green: '#34d399',
+  gold: '#fbbf24',
+  muted: 'rgba(255,255,255,0.25)',
+  grid: 'rgba(255,255,255,0.03)'
+};
+
+let nodes = [], packets = [], logLines = [], raf, tick = 0, taskTimer = 25, taskIdx = 0;
+
+const NODE_DEF = [
+  { id: 'core', label: 'AGENT\nCORE',  color: C.accent,  cx:.5, cy:.5, r:34 },
+  { id: 'web',  label: 'Web\nSearch',  color: C.purple,  cx:.18,cy:.2, r:20 },
+  { id: 'db',   label: 'Vector\nDB',   color: C.purple,  cx:.82,cy:.2, r:20 },
+  { id: 'code', label: 'Code\nRunner', color: C.gold,    cx:.18,cy:.8, r:20 },
+  { id: 'api',  label: 'GSC\nAPI',     color: C.gold,    cx:.82,cy:.8, r:20 },
+  { id: 'seo',  label: 'SEO\nEngine',  color: C.green,   cx:.5, cy:.13,r:20 },
+  { id: 'out',  label: 'Output\n+Mem', color: C.green,   cx:.5, cy:.87,r:20 },
+];
+
+const TASKS = [
+  {f:'core',t:'web',  log:'Searching: "LangGraph best practices 2025"…'},
+  {f:'web', t:'core', log:'Returned 12 relevant results'},
+  {f:'core',t:'seo',  log:'Analyzing keyword gap for target URLs…'},
+  {f:'seo', t:'core', log:'847 keyword opportunities found'},
+  {f:'core',t:'db',   log:'Querying vector store for existing content…'},
+  {f:'db',  t:'core', log:'23 similar articles retrieved'},
+  {f:'core',t:'code', log:'Running Core Web Vitals audit script…'},
+  {f:'code',t:'core', log:'LCP: 2.1s ✓ CLS: 0.03 ✓ FID: 89ms ✓'},
+  {f:'core',t:'api',  log:'Fetching GSC impressions last 90 days…'},
+  {f:'api', t:'core', log:'CTR data loaded: 1,240 queries'},
+  {f:'core',t:'out',  log:'Generating optimised content brief…'},
+  {f:'out', t:'core', log:'✓ Brief ready · stored in memory'},
+];
+
+function init() {
+  const W = canvas.width, H = canvas.height;
+  nodes = NODE_DEF.map(d => ({
+    ...d, x: d.cx*W, y: d.cy*H,
+    pulse: Math.random()*Math.PI*2, active: false
+  }));
+}
+
+function getN(id) { return nodes.find(n=>n.id===id); }
+
+function addPkt(fId, tId, color) {
+  const f=getN(fId), t=getN(tId);
+  if(!f||!t) return;
+  packets.push({x:f.x, y:f.y, tx:t.x, ty:t.y, prog:0, color, done:false});
+}
+
+function nextTask() {
+  if(taskIdx>=TASKS.length) taskIdx=0;
+  const t=TASKS[taskIdx++];
+  addPkt(t.f, t.t, t.f==='core'?C.accent:C.green);
+  const fn=getN(t.f), tn=getN(t.t);
+  if(fn) fn.active=true;
+  if(tn) tn.active=true;
+  const now=new Date();
+  const ts=`${String(now.getHours()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+  logLines.unshift(`[${ts}] ${t.log}`);
+  if(logLines.length>5) logLines.pop();
+  taskTimer = 55 + Math.random()*35;
+}
+
+function drawGrid() {
+  ctx.strokeStyle=C.grid; ctx.lineWidth=1;
+  for(let x=0;x<canvas.width;x+=36){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+  for(let y=0;y<canvas.height;y+=36){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+}
+
+function drawConns() {
+  const core=getN('core');
+  NODE_DEF.slice(1).forEach(def=>{
+    const t=getN(def.id);
+    ctx.beginPath();ctx.moveTo(core.x,core.y);ctx.lineTo(t.x,t.y);
+    ctx.strokeStyle='rgba(56,189,248,0.07)';ctx.lineWidth=1;
+    ctx.setLineDash([3,6]);ctx.stroke();ctx.setLineDash([]);
+  });
+}
+
+function drawNode(n) {
+  n.pulse+=0.035;
+  const glow = n.active ? 28 : 10;
+  const grad=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r+glow);
+  grad.addColorStop(0,n.color+'28');
+  grad.addColorStop(1,n.color+'00');
+  ctx.beginPath();ctx.arc(n.x,n.y,n.r+glow,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
+  ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+  ctx.strokeStyle=n.active?n.color:n.color+'55';
+  ctx.lineWidth=n.active?2:1; ctx.stroke();
+  ctx.beginPath();ctx.arc(n.x,n.y,n.r-2,0,Math.PI*2);ctx.fillStyle='#0a0f1a';ctx.fill();
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  const lines=n.label.split('\n');
+  const lh=12;
+  ctx.fillStyle=n.active?n.color:'rgba(255,255,255,0.4)';
+  ctx.font=`${n.id==='core'?'600 11px':'500 9px'} Fira Code,monospace`;
+  lines.forEach((l,i)=>ctx.fillText(l,n.x,n.y+(i-(lines.length-1)/2)*lh));
+  n.active=false;
+}
+
+function drawPackets() {
+  packets.forEach(p=>{
+    p.prog+=0.02; if(p.prog>=1){p.done=true;return;}
+    const x=p.x+(p.tx-p.x)*p.prog, y=p.y+(p.ty-p.y)*p.prog;
+    for(let i=4;i>=0;i--){
+      const pp=Math.max(0,p.prog-i*0.025);
+      const px=p.x+(p.tx-p.x)*pp, py=p.y+(p.ty-p.y)*pp;
+      const a=Math.floor((1-i*0.2)*220).toString(16).padStart(2,'0');
+      ctx.beginPath();ctx.arc(px,py,3.5-i*0.5,0,Math.PI*2);
+      ctx.fillStyle=p.color+a;ctx.fill();
+    }
+    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
+  });
+  packets=packets.filter(p=>!p.done);
+}
+
+function drawLogs() {
+  const H=canvas.height;
+  ctx.font='10px Fira Code,monospace';ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  logLines.forEach((l,i)=>{
+    ctx.fillStyle=`rgba(56,189,248,${0.75-i*0.13})`;
+    ctx.fillText(l.length>60?l.slice(0,60)+'…':l, 14, H-16-i*16);
+  });
+}
+
+function loop() {
+  ctx.fillStyle=C.bg; ctx.fillRect(0,0,canvas.width,canvas.height);
+  drawGrid(); drawConns();
+  drawPackets(); nodes.forEach(drawNode); drawLogs();
+  taskTimer--; if(taskTimer<=0) nextTask();
+  tick++;
+  raf=requestAnimationFrame(loop);
+}
+
+function startSim() {
+  cancelAnimationFrame(raf);
+  packets=[]; logLines=[]; taskIdx=0; tick=0; taskTimer=20;
+  init();
+  logLines=['[BOOT] Agentic SEO system initialised…','[INFO] Tools connected: web, db, code, api, seo'];
+  loop();
+}
+
+startSim();
+document.getElementById('replay-btn').addEventListener('click', startSim);
+</script>
+</body>
+</html>
