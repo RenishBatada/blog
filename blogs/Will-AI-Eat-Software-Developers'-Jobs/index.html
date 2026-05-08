@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Will AI replace software developers? The honest truth - AI won't take your job if you learn to hire AI as your worker. Practical strategies for developers to thrive in the AI era.">
+    <meta name="keywords" content="AI and developers, software developer jobs, AI automation, developer productivity, AI coding tools, future of software development, will AI replace developers">
+    <meta name="author" content="Renish Batada">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Will AI Eat Software Developers' Jobs? | Renish Batada">
+    <meta property="og:description" content="The honest truth every developer needs to hear - AI won't take your job if you learn to hire AI as your worker.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://renishbatada.com/blog/software-developers-daily-job">
+    <meta property="og:image" content="https://renishbatada.com/blog/software-developers-daily-job/banner.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Will AI Eat Software Developers' Jobs? | Renish Batada">
+    <meta name="twitter:description" content="The honest truth every developer needs to hear - AI won't take your job if you learn to hire AI as your worker.">
+    <link rel="canonical" href="https://renishbatada.com/blog/software-developers-daily-job">
+    <title>Will AI Eat Software Developers' Jobs? | Renish Batada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050810;
+            --bg-alt: #0a0f1c;
+            --card: #0d1328;
+            --accent: #6ef3ff;
+            --accent-2: #ff6ec7;
+            --accent-3: #a78bfa;
+            --text: #e4e7f5;
+            --muted: #94a3b8;
+            --border: rgba(110, 243, 255, 0.2);
+            --danger: #ff4757;
+            --success: #2ed573;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(110, 243, 255, 0.12), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 110, 199, 0.12), transparent),
+                radial-gradient(ellipse 50% 30% at 50% 50%, rgba(167, 139, 250, 0.08), transparent);
+            animation: bgPulse 20s ease-in-out infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(110, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(110, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Random positions and animations for 50 particles */
+        .particle:nth-child(1) { left: 2%; top: 80%; animation: float1 12s infinite; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 5%; top: 20%; animation: float2 14s infinite; animation-delay: 0.3s; background: var(--accent-2); }
+        .particle:nth-child(3) { left: 8%; top: 60%; animation: float3 11s infinite; animation-delay: 0.6s; }
+        .particle:nth-child(4) { left: 12%; top: 40%; animation: float4 13s infinite; animation-delay: 0.9s; background: var(--accent-3); }
+        .particle:nth-child(5) { left: 15%; top: 90%; animation: float5 15s infinite; animation-delay: 1.2s; }
+        .particle:nth-child(6) { left: 18%; top: 30%; animation: float6 12s infinite; animation-delay: 1.5s; background: var(--accent-2); }
+        .particle:nth-child(7) { left: 22%; top: 70%; animation: float7 14s infinite; animation-delay: 1.8s; }
+        .particle:nth-child(8) { left: 25%; top: 10%; animation: float8 11s infinite; animation-delay: 2.1s; background: var(--accent-3); }
+        .particle:nth-child(9) { left: 28%; top: 50%; animation: float9 13s infinite; animation-delay: 2.4s; }
+        .particle:nth-child(10) { left: 32%; top: 85%; animation: float10 15s infinite; animation-delay: 2.7s; background: var(--accent-2); }
+        .particle:nth-child(11) { left: 35%; top: 25%; animation: float1 12s infinite; animation-delay: 3s; }
+        .particle:nth-child(12) { left: 38%; top: 65%; animation: float2 14s infinite; animation-delay: 3.3s; background: var(--accent-3); }
+        .particle:nth-child(13) { left: 42%; top: 45%; animation: float3 11s infinite; animation-delay: 3.6s; }
+        .particle:nth-child(14) { left: 45%; top: 75%; animation: float4 13s infinite; animation-delay: 3.9s; background: var(--accent-2); }
+        .particle:nth-child(15) { left: 48%; top: 15%; animation: float5 15s infinite; animation-delay: 4.2s; }
+        .particle:nth-child(16) { left: 52%; top: 55%; animation: float6 12s infinite; animation-delay: 4.5s; background: var(--accent-3); }
+        .particle:nth-child(17) { left: 55%; top: 35%; animation: float7 14s infinite; animation-delay: 4.8s; }
+        .particle:nth-child(18) { left: 58%; top: 95%; animation: float8 11s infinite; animation-delay: 5.1s; background: var(--accent-2); }
+        .particle:nth-child(19) { left: 62%; top: 5%; animation: float9 13s infinite; animation-delay: 5.4s; }
+        .particle:nth-child(20) { left: 65%; top: 68%; animation: float10 15s infinite; animation-delay: 5.7s; background: var(--accent-3); }
+        .particle:nth-child(21) { left: 68%; top: 28%; animation: float1 12s infinite; animation-delay: 6s; }
+        .particle:nth-child(22) { left: 72%; top: 88%; animation: float2 14s infinite; animation-delay: 6.3s; background: var(--accent-2); }
+        .particle:nth-child(23) { left: 75%; top: 48%; animation: float3 11s infinite; animation-delay: 6.6s; }
+        .particle:nth-child(24) { left: 78%; top: 8%; animation: float4 13s infinite; animation-delay: 6.9s; background: var(--accent-3); }
+        .particle:nth-child(25) { left: 82%; top: 78%; animation: float5 15s infinite; animation-delay: 7.2s; }
+        .particle:nth-child(26) { left: 85%; top: 38%; animation: float6 12s infinite; animation-delay: 7.5s; background: var(--accent-2); }
+        .particle:nth-child(27) { left: 88%; top: 58%; animation: float7 14s infinite; animation-delay: 7.8s; }
+        .particle:nth-child(28) { left: 92%; top: 18%; animation: float8 11s infinite; animation-delay: 8.1s; background: var(--accent-3); }
+        .particle:nth-child(29) { left: 95%; top: 82%; animation: float9 13s infinite; animation-delay: 8.4s; }
+        .particle:nth-child(30) { left: 98%; top: 42%; animation: float10 15s infinite; animation-delay: 8.7s; background: var(--accent-2); }
+        .particle:nth-child(31) { left: 4%; top: 52%; animation: float3 11s infinite; animation-delay: 9s; }
+        .particle:nth-child(32) { left: 10%; top: 22%; animation: float7 14s infinite; animation-delay: 9.3s; background: var(--accent-3); }
+        .particle:nth-child(33) { left: 16%; top: 72%; animation: float1 12s infinite; animation-delay: 9.6s; }
+        .particle:nth-child(34) { left: 24%; top: 12%; animation: float5 15s infinite; animation-delay: 9.9s; background: var(--accent-2); }
+        .particle:nth-child(35) { left: 30%; top: 92%; animation: float9 13s infinite; animation-delay: 10.2s; }
+        .particle:nth-child(36) { left: 36%; top: 32%; animation: float2 14s infinite; animation-delay: 10.5s; background: var(--accent-3); }
+        .particle:nth-child(37) { left: 44%; top: 62%; animation: float6 12s infinite; animation-delay: 10.8s; }
+        .particle:nth-child(38) { left: 50%; top: 2%; animation: float10 15s infinite; animation-delay: 11.1s; background: var(--accent-2); }
+        .particle:nth-child(39) { left: 56%; top: 92%; animation: float4 13s infinite; animation-delay: 11.4s; }
+        .particle:nth-child(40) { left: 64%; top: 22%; animation: float8 11s infinite; animation-delay: 11.7s; background: var(--accent-3); }
+        .particle:nth-child(41) { left: 70%; top: 62%; animation: float1 12s infinite; animation-delay: 12s; }
+        .particle:nth-child(42) { left: 76%; top: 42%; animation: float5 15s infinite; animation-delay: 12.3s; background: var(--accent-2); }
+        .particle:nth-child(43) { left: 84%; top: 72%; animation: float3 11s infinite; animation-delay: 12.6s; }
+        .particle:nth-child(44) { left: 90%; top: 32%; animation: float7 14s infinite; animation-delay: 12.9s; background: var(--accent-3); }
+        .particle:nth-child(45) { left: 96%; top: 62%; animation: float9 13s infinite; animation-delay: 13.2s; }
+        .particle:nth-child(46) { left: 6%; top: 12%; animation: float2 14s infinite; animation-delay: 13.5s; background: var(--accent-2); }
+        .particle:nth-child(47) { left: 14%; top: 82%; animation: float6 12s infinite; animation-delay: 13.8s; }
+        .particle:nth-child(48) { left: 20%; top: 52%; animation: float10 15s infinite; animation-delay: 14.1s; background: var(--accent-3); }
+        .particle:nth-child(49) { left: 34%; top: 8%; animation: float4 13s infinite; animation-delay: 14.4s; }
+        .particle:nth-child(50) { left: 54%; top: 98%; animation: float8 11s infinite; animation-delay: 14.7s; background: var(--accent-2); }
+
+        /* 10 different random float animations */
+        @keyframes float1 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(50px, -80px) scale(1); }
+            50% { transform: translate(-30px, -150px) scale(1.2); }
+            75% { transform: translate(70px, -220px) scale(0.8); }
+            100% { transform: translate(-20px, -300px) scale(0); opacity: 0; }
+        }
+        @keyframes float2 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(-60px, -70px) scale(1.1); }
+            50% { transform: translate(40px, -140px) scale(0.9); }
+            75% { transform: translate(-50px, -210px) scale(1.3); }
+            100% { transform: translate(30px, -280px) scale(0); opacity: 0; }
+        }
+        @keyframes float3 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(80px, 50px) scale(1); }
+            50% { transform: translate(-40px, 100px) scale(1.1); }
+            75% { transform: translate(60px, 150px) scale(0.7); }
+            100% { transform: translate(-80px, 200px) scale(0); opacity: 0; }
+        }
+        @keyframes float4 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(-70px, -90px) scale(1.2); }
+            50% { transform: translate(90px, -180px) scale(0.8); }
+            75% { transform: translate(-60px, -270px) scale(1); }
+            100% { transform: translate(40px, -350px) scale(0); opacity: 0; }
+        }
+        @keyframes float5 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(30px, 60px) scale(0.9); }
+            50% { transform: translate(-50px, 120px) scale(1.2); }
+            75% { transform: translate(70px, 180px) scale(0.6); }
+            100% { transform: translate(-40px, 250px) scale(0); opacity: 0; }
+        }
+        @keyframes float6 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(-40px, -120px) scale(1.1); }
+            50% { transform: translate(60px, -240px) scale(0.9); }
+            75% { transform: translate(-30px, -360px) scale(1.3); }
+            100% { transform: translate(50px, -450px) scale(0); opacity: 0; }
+        }
+        @keyframes float7 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(100px, -40px) scale(1); }
+            50% { transform: translate(-80px, -80px) scale(1.2); }
+            75% { transform: translate(50px, -120px) scale(0.8); }
+            100% { transform: translate(-60px, -160px) scale(0); opacity: 0; }
+        }
+        @keyframes float8 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(-90px, 80px) scale(1.3); }
+            50% { transform: translate(70px, 160px) scale(0.7); }
+            75% { transform: translate(-50px, 240px) scale(1); }
+            100% { transform: translate(80px, 320px) scale(0); opacity: 0; }
+        }
+        @keyframes float9 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(60px, -100px) scale(0.8); }
+            50% { transform: translate(-70px, -200px) scale(1.1); }
+            75% { transform: translate(40px, -300px) scale(0.9); }
+            100% { transform: translate(-50px, -400px) scale(0); opacity: 0; }
+        }
+        @keyframes float10 {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            10% { opacity: 0.9; }
+            25% { transform: translate(-80px, 40px) scale(1.2); }
+            50% { transform: translate(100px, 80px) scale(0.6); }
+            75% { transform: translate(-60px, 120px) scale(1); }
+            100% { transform: translate(70px, 160px) scale(0); opacity: 0; }
+        }
+
+        /* Main Container */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* Header */
+        header {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--accent-2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--muted);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-meta span::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Banner */
+        .hero-banner {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            animation: float 8s ease-in-out infinite, fadeInUp 0.8s ease-out 0.4s both;
+            position: relative;
+            box-shadow: 
+                0 0 60px rgba(110, 243, 255, 0.1),
+                0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-15px) rotateX(2deg); }
+        }
+
+        @keyframes borderRotate {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        /* Sections */
+        section {
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            animation: expandLine 0.8s ease-out forwards;
+        }
+
+        @keyframes expandLine {
+            to { width: 100%; }
+        }
+
+        section p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Opening Scene */
+        .opening-scene {
+            background: linear-gradient(135deg, var(--card), var(--bg-alt));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .opening-scene::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--danger), var(--accent-2));
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 12px;
+            padding: 1.25rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-block::before {
+            content: 'ERROR';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.75rem;
+            font-size: 0.65rem;
+            color: var(--danger);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .code-block code {
+            color: var(--danger);
+        }
+
+        .timestamp {
+            color: var(--muted);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .comparison-card.old-way {
+            border-color: rgba(255, 71, 87, 0.4);
+        }
+
+        .comparison-card.new-way {
+            border-color: rgba(46, 213, 115, 0.4);
+        }
+
+        .comparison-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(110, 243, 255, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        .comparison-card.old-way::after {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.08), transparent);
+        }
+
+        .comparison-card.new-way::after {
+            background: linear-gradient(135deg, rgba(46, 213, 115, 0.08), transparent);
+        }
+
+        .comparison-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .comparison-card.old-way h3 {
+            color: var(--danger);
+        }
+
+        .comparison-card.new-way h3 {
+            color: var(--success);
+        }
+
+        .comparison-card .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .comparison-card.old-way .icon {
+            background: rgba(255, 71, 87, 0.15);
+        }
+
+        .comparison-card.new-way .icon {
+            background: rgba(46, 213, 115, 0.15);
+        }
+
+        .comparison-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .feature-list {
+            margin-top: 1.25rem;
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .feature-list li::before {
+            content: '>';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .comparison-card.old-way .feature-list li::before {
+            color: var(--danger);
+        }
+
+        .comparison-card.new-way .feature-list li::before {
+            color: var(--success);
+        }
+
+        /* VS Divider */
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-3);
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .vs-divider::before,
+        .vs-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .vs-divider span {
+            padding: 0 1.5rem;
+            background: var(--bg-alt);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Prompt Box */
+        .prompt-box {
+            background: linear-gradient(135deg, rgba(110, 243, 255, 0.15), rgba(255, 110, 199, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--text);
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .prompt-box::before {
+            content: '>';
+            position: absolute;
+            left: 1rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(110, 243, 255, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 110, 199, 0.3); }
+        }
+
+        /* Time Comparison */
+        .time-compare {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .time-box {
+            flex: 1;
+            padding: 1.25rem;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .time-box:hover {
+            transform: scale(1.05);
+        }
+
+        .time-box.slow {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            color: var(--danger);
+        }
+
+        .time-box.fast {
+            background: rgba(46, 213, 115, 0.15);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            color: var(--success);
+        }
+
+        /* Grid Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(110, 243, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(110, 243, 255, 0.08), transparent);
+            pointer-events: none;
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            border-left: 2px solid var(--border);
+            margin-top: 2rem;
+            padding-left: 1.75rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border: 3px solid var(--bg);
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .timeline-item h3 {
+            color: var(--text);
+            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 2rem 0;
+            padding: 1.75rem 2.25rem;
+            border-left: 4px solid var(--accent-2);
+            background: rgba(255, 110, 199, 0.08);
+            color: var(--text);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            border-radius: 0 16px 16px 0;
+            position: relative;
+        }
+
+        blockquote::before {
+            content: '"';
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            font-size: 3rem;
+            color: var(--accent-2);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        /* Lists */
+        ul {
+            margin-top: 1.25rem;
+            list-style: none;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        ul li {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        ul li::before {
+            content: '>';
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(110, 243, 255, 0.12), rgba(167, 139, 250, 0.12));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .highlight-box h3 {
+            color: var(--accent);
+            margin-bottom: 0.85rem;
+            font-size: 1.25rem;
+        }
+
+        .highlight-box p {
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Truth Box */
+        .truth-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .truth-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .truth-item {
+            padding: 1.75rem;
+            border-radius: 18px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .truth-item:hover {
+            transform: scale(1.03);
+        }
+
+        .truth-item.yes {
+            background: rgba(255, 71, 87, 0.12);
+            border: 2px solid rgba(255, 71, 87, 0.3);
+            color: var(--danger);
+        }
+
+        .truth-item.no {
+            background: rgba(46, 213, 115, 0.12);
+            border: 2px solid rgba(46, 213, 115, 0.3);
+            color: var(--success);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(110, 243, 255, 0.15), rgba(255, 110, 199, 0.15));
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .final-cta h2 {
+            color: var(--text);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .final-cta .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Author Section */
+        .author-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bg);
+        }
+
+        .author-info h4 {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .author-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .author-info a:hover {
+            color: var(--accent-2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 700px) {
+            main {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            section p {
+                text-align: left;
+            }
+
+            .time-compare {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="reading-progress" id="progress"></div>
+
+    <main>
+        <header>
+            <div class="eyebrow">AI & Developers · 2026</div>
+            <h1>Will AI Eat Software Developers' Jobs?</h1>
+            <p class="subtitle">Yes… it can. So why aren't you hiring AI to do 90% of your work? The honest truth every developer needs to hear.</p>
+            <div class="hero-meta">
+                <span>Career Strategy</span>
+                <span>Reading time: 10 min</span>
+            </div>
+            <div class="hero-banner">
+                <img src="./banner.svg" alt="Will AI replace software developers - The truth about AI and developer jobs">
+            </div>
+        </header>
+
+        <!-- Opening Scene -->
+        <div class="opening-scene animate-on-scroll">
+            <p class="timestamp">10:32 AM. You open your laptop. Pull the latest code.</p>
+            <p style="color: var(--danger); font-weight: 600; margin-top: 1rem;">And boom — error.</p>
+            <div class="code-block">
+                <code>TypeError: NoneType object is not iterable</code>
+            </div>
+            <p class="timestamp" style="color: var(--muted);">Same error. Different day.</p>
+        </div>
+
+        <!-- Scene 1: The Old Way -->
+        <section class="animate-on-scroll">
+            <h2>The Old Way (And Why AI Will Replace This)</h2>
+            <p>You open logs. Scroll endlessly. Add print statements. Debug manually.</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card old-way">
+                    <h3><span class="icon">✕</span> What You Do</h3>
+                    <ul class="feature-list">
+                        <li>Open logs and scroll for 20 minutes</li>
+                        <li>Add print statements everywhere</li>
+                        <li>Manually trace the error</li>
+                        <li>Find the issue eventually</li>
+                        <li>Fix takes 2 minutes</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new-way">
+                    <h3><span class="icon">✓</span> What AI Does</h3>
+                    <ul class="feature-list">
+                        <li>Reads logs in seconds</li>
+                        <li>Identifies root cause automatically</li>
+                        <li>Suggests the fix</li>
+                        <li>You verify and apply</li>
+                        <li>Total: 2-3 minutes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Brutal Truth</h3>
+                <p>If your job is mostly <strong>manual debugging, repetitive coding, and clicking around</strong> — then yes, <strong>AI can replace that</strong>. Because it's predictable, repeatable, and doesn't require creativity.</p>
+            </div>
+        </section>
+
+        <!-- Scene 2: The New Way -->
+        <section class="animate-on-scroll">
+            <h2>The New Way (Where You Don't Get Replaced)</h2>
+            <p>Same bug. But now you don't open logs. You just say:</p>
+            
+            <div class="prompt-box">"Find root cause from logs and suggest fix."</div>
+            
+            <p>AI reads logs, finds the issue, suggests a fix. You're not debugging anymore — you're <strong style="color: var(--accent);">managing debugging</strong>.</p>
+            
+            <div class="time-compare">
+                <div class="time-box slow">⏱ Old: 20-30 min</div>
+                <div class="time-box fast">⚡ New: 2-3 min</div>
+            </div>
+        </section>
+
+        <!-- Scene 3: Writing Code -->
+        <section class="animate-on-scroll">
+            <h2>Writing Code (The Copy-Paste Life)</h2>
+            <p>New API endpoint needed. You copy old code, rename variables, adjust schema, add validation. 15-20 minutes of mechanical work.</p>
+            
+            <p><strong>AI Way:</strong></p>
+            <div class="prompt-box">"Create FastAPI CRUD with validation, pagination, error handling"</div>
+            
+            <p>AI generates everything. You only add the business logic that makes your application unique.</p>
+        </section>
+
+        <!-- Scene 4: Testing -->
+        <section class="animate-on-scroll">
+            <h2>Testing (Where Developers Waste Time Quietly)</h2>
+            <p>Click… click… repeat… Same flow every time. Manual testing is the silent productivity killer.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🤖 Chrome DevTools MCP</h3>
+                    <p>Let AI control the browser, automate user flows, capture errors and network logs automatically.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Smart Testing</h3>
+                    <p>You say: "Test login and report failures" — AI opens the app, fills inputs, clicks buttons, validates responses.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Result</h3>
+                    <p>No repetitive testing. No missed bugs. You only handle the edge cases that require human judgment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 5: Deployment -->
+        <section class="animate-on-scroll">
+            <h2>Deployment (Same Commands, Same Fear)</h2>
+            <p>SSH, git pull, npm install, pm2 restart. And always that thought: "Hope nothing breaks."</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card old-way">
+                    <h3><span class="icon">😰</span> Manual Deployment</h3>
+                    <ul class="feature-list">
+                        <li>Remember all commands</li>
+                        <li>SSH into server</li>
+                        <li>Run each step manually</li>
+                        <li>Hope for the best</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new-way">
+                    <h3><span class="icon">🚀</span> Automated Deployment</h3>
+                    <ul class="feature-list">
+                        <li>Git push → auto deploy</li>
+                        <li>CI/CD handles everything</li>
+                        <li>Rollback on failure</li>
+                        <li>No fear, no manual steps</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 6: Daily Updates -->
+        <section class="animate-on-scroll">
+            <h2>Daily Updates (Underrated Pain)</h2>
+            <p>End of day: "What did I even do today?"</p>
+            
+            <blockquote>
+                Smart system: Open ChatGPT in the morning, say "I will give you updates throughout the day. Convert them into a structured report at the end."
+            </blockquote>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>⏰ Hourly Alarm</h3>
+                    <p>Set an alarm every 1 hour. When it rings, take 1 minute to voice chat with ChatGPT — just speak what you did in that hour. Quick, natural, no typing.</p>
+                </div>
+                <div class="card">
+                    <h3>📋 End of Day</h3>
+                    <p>Copy the entire day's chat, paste into a new ChatGPT conversation, say "Generate daily update report." Done. Clean. Structured. Ready to share.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 7: Log Monitoring -->
+        <section class="animate-on-scroll">
+            <h2>Log Monitoring (Silent Time Waste)</h2>
+            <p>You check logs again and again. Most of the time — nothing is wrong.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🤖 AI Monitors</h3>
+                    <p>AI watches logs 24/7, alerts only when something actually matters, summarizes issues in plain English.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Your Role</h3>
+                    <p>You stop checking. You only react when alerted. Your time goes to building, not watching.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Honest Answer -->
+        <section class="animate-on-scroll">
+            <h2>So… Will AI Take Your Job?</h2>
+            
+            <div class="truth-box">
+                <div class="truth-item yes">
+                    <strong>YES</strong><br><br>
+                    If you keep working manually
+                </div>
+                <div class="truth-item no">
+                    <strong>NO</strong><br><br>
+                    If you start using AI as your worker
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>The Strategy Nobody Tells You</h3>
+                <p>Don't announce "I automated everything" — that just brings more work. Instead: deliver faster, stay consistent, quietly automate more. For the next 1-3 months, automate one task at a time. Build your personal system.</p>
+                <p style="margin-top: 1rem; color: var(--danger); font-weight: 500;">⚠️ Warning: If you tell your manager or coworkers about your automation system, they might realize your job can be done faster — and you could lose your position. Keep it quiet. Your efficiency is your competitive advantage.</p>
+            </div>
+        </section>
+
+        <!-- What Happens Next -->
+        <section class="animate-on-scroll">
+            <h2>What Happens Next?</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>You finish work faster</h3>
+                    <p>Tasks that took hours now take minutes. You have time for deep work, learning, and strategic thinking.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>You make fewer mistakes</h3>
+                    <p>AI catches errors before they reach production. Your code quality improves consistently.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>You become reliable</h3>
+                    <p>Predictable output, consistent quality, on-time delivery. Your manager starts depending on you.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>You upgrade your role</h3>
+                    <p>From "person who writes code" to "person who ensures the right code gets written." Higher leverage. Higher value.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>No more layoff fear</h3>
+                    <p>When your manager depends on you, you become irreplaceable. No more anxiety about layoffs, no more fear of being fired. You have job security because you deliver real value that others can't replicate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <div class="final-cta animate-on-scroll">
+            <h2>Final Line</h2>
+            <p>AI is not here to take your job.</p>
+            <p style="font-size: 1.25rem; margin-top: 1rem;">You are supposed to <span class="highlight">hire AI to do your job.</span></p>
+            <p style="margin-top: 1rem;">And when you do that — you don't lose your job. You <span class="highlight">upgrade your role.</span></p>
+        </div>
+
+        <!-- Author -->
+        <div class="author-section">
+            <div class="author-avatar">RB</div>
+            <div class="author-info">
+                <h4>Renish Batada</h4>
+                <p><a href="https://renishbatada.com">renishbatada.com</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Reading Progress
+        const progress = document.getElementById('progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progress.style.width = scrollPercent + '%';
+        });
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
